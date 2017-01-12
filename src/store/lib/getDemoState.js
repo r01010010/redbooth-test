@@ -6,6 +6,7 @@ import State from '../models/state';
 const user = new User(data.user);
 const board = new Board(data.board);
 
+console.log(board);
 function getDemoState() {
   return new State({
     user,

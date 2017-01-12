@@ -1,42 +1,34 @@
+import Collection from './collection.js';
 import Task from './task';
 
-class Column {
+class Column extends Collection {
 
   constructor(data) {
+    super(Task, data.tasks);
     this.title = data.title;
     this.id    = data.id;
     this.meansCompletion = data.meansCompletion;
-    this.taskHistoryLength = data.taskHistoryLength || [data.tasks.length];
-    this.tasks = data.tasks.map(task => {
-      return new Task(task);
-    });
   }
 
-  _getTaskById(id) {
+  get tasks() {
+    return this.list;
+  }
 
-    const tasks = this.tasks;
+  get taskHistoryLength() {
+    return this.itemHistoryLength;
+  }
 
-    for (let i = 0; i < tasks.length; i++) {
-      const task = tasks[i];
-      if (task.id === id) {
-        task.index = i;
-        return task;
-      }
-    }
-
-    return null;
-
+  getTaskById(id) {
+    return this._getFromListById(id);
   }
 
   addTask(task) {
     task.column = this.id;
-    this.tasks.push(new Task(task));
-    this.taskHistoryLength.unshift(this.tasks.length);
+    super._addItem(task);
   }
 
   deleteTask(task) {
-    this.tasks.splice(this._getTaskById(task.id).index, 1);
-    this.taskHistoryLength.unshift(this.tasks.length);
+    super._deleteItem(task);
   }
 
 }

@@ -1,34 +1,34 @@
+import Collection from './collection';
 import Column from './column';
 
-class Board {
+class Board extends Collection {
 
   constructor(data) {
+    super(Column, data.columns);
     this.title   = data.title;
     this.id      = data.id;
-    this.columns = data.columns.map(column => {
-      return new Column(column);
-    });
   }
 
-  _getColumnById(id) {
+  get columns() {
+    return this.list;
+  }
 
-    const columns = this.columns;
-    for (let i = 0; i < columns.length; i++) {
-      const column = columns[i];
-      if (column.id === id) {
-        column.index = i;
-        return column;
-      }
-    }
+  getColumnById(id) {
+    return this._getFromListById(id);
+  }
 
-    return null;
+  addColumn(column) {
+    this._addItem(column);
+  }
 
+  deleteColumn(column) {
+    this._deleteItem(column);
   }
 
   moveTask(task, idColumnTo) {
-    const columnFrom = this._getColumnById(task.column);
-    const columnTo = this._getColumnById(idColumnTo);
-    task = columnFrom._getTaskById(task.id);
+    const columnFrom = this.getColumnById(task.column);
+    const columnTo = this.getColumnById(idColumnTo);
+    task = columnFrom.getTaskById(task.id);
     columnTo.addTask(task);
     columnFrom.deleteTask(task);
   }

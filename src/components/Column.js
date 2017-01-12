@@ -3,10 +3,10 @@ import Task from './Task';
 
 class Column extends Component {
 
-  static propTypes = {
+  /*static propTypes = {
     title: PropTypes.string.isRequired,
     tasks: PropTypes.array.isRequired
-  }
+  }*/
 
   static contextTypes = {
     store: PropTypes.object.isRequired
@@ -40,14 +40,15 @@ class Column extends Component {
   render() {
     const { id, title, tasks, taskHistoryLength, meansCompletion } = this.props;
 
-    const taskList = tasks.map(task =>
-      <Task key={task.id} id={task.id} title={task.title} column={task.column} />
-    );
+    const taskList = Object.keys(tasks).map(key => {
+      const task = tasks[key];
+      return <Task key={task.id} id={task.id} title={task.title} column={task.column} />
+    });
 
     let completionEnfasis = '';
 
-    if (meansCompletion && taskHistoryLength[1] && taskHistoryLength[1] < tasks.length) {
-      completionEnfasis = <div><img width="300px" src="http://i3.kym-cdn.com/photos/images/original/000/972/132/24d.gif"/></div>;
+    if (meansCompletion && taskHistoryLength[1] && taskHistoryLength[1] < Object.keys(tasks).length) {
+      completionEnfasis = <div><img width="300px" src="http://i3.kym-cdn.com/photos/images/original/000/972/132/24d.gif" role="presentation"/></div>;
     }
 
     return (
