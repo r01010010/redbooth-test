@@ -1,0 +1,49 @@
+{
+
+  "user": {
+    "name": "Alex",
+    "id": "klsdjfkla2jkj23h2jk3232323khk2"
+  },
+  "board": {
+    "title": "Redbooth Board",
+    "id": "redbooth-board",
+    "columns": [
+      {
+        "title": "TODO",
+        "id": "todo",
+        "meansCompletion": false,
+        "tasks": [
+          {
+            "id": "skdfasdfjlaskdf34343kDDFASDdfdf1",
+            "title": "Task 1",
+            "column": "todo"
+          }
+        ]
+      },
+      {
+        "title": "DOING",
+        "id": "doing",
+        "meansCompletion": false,
+        "tasks": [
+          {
+            "id": "skdfasdfjlasasdfsadfaskdf34343k2",
+            "title": "Task 2",
+            "column": "doing"
+          }
+        ]
+      },
+      {
+        "title": "DONE!",
+        "id": "done",
+        "meansCompletion": true,
+        "tasks": [
+          {
+            "id": "skdfasdfjlaasdase321dskdf34343k3",
+            "title": "Task 3",
+            "column": "done"
+          }
+        ]
+      }
+    ]
+  }
+}

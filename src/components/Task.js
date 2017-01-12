@@ -2,17 +2,44 @@ import React, { Component, PropTypes } from 'react';
 
 class Task extends Component {
 
-  static propTypes = {
-    title: PropTypes.string.isRequired
+/*  static propTypes = {
+    title: PropTypes.string.isRequired,
+    isBeingDragged: PropTypes.bool.isRequired,
+    onDrop: PropTypes.function.isRequired,
+    onDrag: PropTypes.function.isRequired
   }
+*/
+
+  dragStart = e => {
+    e.currentTarget.style.opacity = '0.5';
+    e.dataTransfer.effectAllowed = 'move';
+    const task = {
+      id: this.props.id,
+      column: this.props.column
+    };
+    e.dataTransfer.setData('text', JSON.stringify(task));
+  };
+
+  dragEnd = e => {
+    e.currentTarget.style.opacity = '1';
+  };
 
   render() {
 
-    const { title } = this.props;
+    const { id, title } = this.props;
 
     return (
-      <div>
-        {title}
+      <div
+        key={id}
+        className="task"
+        draggable='true'
+        data-id={id}
+        onDragStart={this.dragStart}
+        onDragEnd={this.dragEnd}
+        >
+        <div className="task-title">
+          {title}
+        </div>
       </div>
     );
   }

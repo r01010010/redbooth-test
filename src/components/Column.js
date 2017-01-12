@@ -1,18 +1,72 @@
 import React, { Component, PropTypes } from 'react';
+import Task from './Task';
 
 class Column extends Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    tasks: PropTypes.array.isRequired
   }
 
-  render() {
+  static contextTypes = {
+    store: PropTypes.object.isRequired
+  }
 
-    const { title } = this.props;
+  dragOver = e => {
+    e.preventDefault();
+  };
+
+  dragEnter = e => {
+    //const task = JSON.parse(e.dataTransfer.getData('text'));
+    //if (task.column !== this.props.id) {
+    //  this.column.style.border = 'dashed';
+    //}
+    e.preventDefault();
+  };
+
+  dragLeave = () => {
+    //this.column.style.border = 'solid';
+  }
+
+  drop = e => {
+    const task = JSON.parse(e.dataTransfer.getData('text'));
+    this.context.store.dispatch({
+      type: 'DROP',
+      to: this.props.id,
+      task: task
+    });
+  };
+
+  render() {
+    const { id, title, tasks, taskHistoryLength, meansCompletion } = this.props;
+
+    const taskList = tasks.map(task =>
+      <Task key={task.id} id={task.id} title={task.title} column={task.column} />
+    );
+
+    let completionEnfasis = '';
+
+    if (meansCompletion && taskHistoryLength[1] && taskHistoryLength[1] < tasks.length) {
+      completionEnfasis = <div><img width="300px" src="http://i3.kym-cdn.com/photos/images/original/000/972/132/24d.gif"/></div>;
+    }
 
     return (
-      <div>
-        {title}
+      <div
+        className="column"
+        key={id}
+        id={id}
+        onDrop={this.drop}
+        onDragOver={this.dragOver}
+        onDragEnter={this.dragEnter}
+        onDragLeave={this.dragLeave}
+        >
+          <div className="column-title">
+            {title}
+          </div>
+          {completionEnfasis}
+          <div>
+           { taskList }
+          </div>
       </div>
     );
   }
