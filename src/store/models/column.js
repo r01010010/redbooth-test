@@ -23,8 +23,14 @@ class Column extends Collection {
   }
 
   addTask(task) {
+    if (this.meansCompletion) {
+      task.complete();
+    } else if (task.state === 'complete') {
+      task.reOpen();
+    }
     task.column = this.id;
     super._addItem(task);
+
   }
 
   deleteTask(task) {

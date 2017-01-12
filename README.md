@@ -11,7 +11,7 @@ npm start
 
 ## Roadmap
 
-- For columns and tasks collections use objects instead arrays. Use id's as keys.
+- <del>For columns and tasks collections use objects instead arrays. Use id's as keys to improve performance.</del>
 - Add timers to the effects
 - Create task funtionality
 - Add client API

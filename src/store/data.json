@@ -16,7 +16,8 @@
           "skdfasdfjlaskdf34343kDDFASDdfdf1": {
             "id": "skdfasdfjlaskdf34343kDDFASDdfdf1",
             "title": "Task 1",
-            "column": "todo"
+            "column": "todo",
+            "state": "open"
           }
         }
       },
@@ -28,7 +29,8 @@
           "skdfasdfjlasasdfsadfaskdf34343k2": {
             "id": "skdfasdfjlasasdfsadfaskdf34343k2",
             "title": "Task 2",
-            "column": "doing"
+            "column": "doing",
+            "state": "open"
           }
         }
       },
@@ -40,7 +42,8 @@
           "skdfasdfjlaasdase321dskdf34343k3": {
             "id": "skdfasdfjlaasdase321dskdf34343k3",
             "title": "Task 3",
-            "column": "done"
+            "column": "done",
+            "state": "complete"
           }
         }
       }

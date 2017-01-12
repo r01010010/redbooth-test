@@ -42,7 +42,7 @@ class Column extends Component {
 
     const taskList = Object.keys(tasks).map(key => {
       const task = tasks[key];
-      return <Task key={task.id} id={task.id} title={task.title} column={task.column} />
+      return <Task key={task.id} id={task.id} title={task.title} column={task.column} state={task.state}/>
     });
 
     let completionEnfasis = '';
@@ -62,9 +62,9 @@ class Column extends Component {
         onDragLeave={this.dragLeave}
         >
           <div className="column-title">
-            {title}
+            { title } ({taskHistoryLength[0]})
           </div>
-          {completionEnfasis}
+          { completionEnfasis }
           <div>
            { taskList }
           </div>

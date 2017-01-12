@@ -26,7 +26,7 @@ class Task extends Component {
 
   render() {
 
-    const { id, title } = this.props;
+    const { id, title, state } = this.props;
 
     return (
       <div
@@ -37,7 +37,7 @@ class Task extends Component {
         onDragStart={this.dragStart}
         onDragEnd={this.dragEnd}
         >
-        <div className="task-title">
+        <div className={'task-title ' + state}>
           {title}
         </div>
       </div>
