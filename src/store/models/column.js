@@ -30,7 +30,6 @@ class Column extends Collection {
     }
     task.column = this.id;
     super._addItem(task);
-
   }
 
   deleteTask(task) {

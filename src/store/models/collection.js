@@ -14,7 +14,6 @@ class Collection {
     for (const key in plainObjectList) {
       if (plainObjectList.hasOwnProperty(key)) {
         const element = plainObjectList[key];
-        //console.log(element);
         list[key] = new Class(element);
       }
     }

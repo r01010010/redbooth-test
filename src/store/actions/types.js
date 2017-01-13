@@ -1,7 +1,5 @@
 const TYPES = {
-  'DRAG': 'DRAG',
-  'DROP': 'DROP',
-  'COMPLETE': 'COMPLETE'
+  'MOVE_TASK': 'MOVE_TASK'
 };
 
 export default TYPES;
