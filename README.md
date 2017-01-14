@@ -9,6 +9,7 @@ In one console:
 
 ```
 cd server
+npm install
 node server
 ```
 

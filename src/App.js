@@ -20,7 +20,7 @@ class App extends Component {
       return <Board data={state.board} />;
 
     } else {
-      return <div>Oops</div>;
+      return <div>Oops, we definately dunno whats going on.</div>;
     }
   }
 

@@ -10,7 +10,6 @@ class RestClient {
 
     path = this.uri + '/' + path;
 
-    console.log(fetch);
     fetch(path)
     .then(response => {
 
@@ -25,6 +24,7 @@ class RestClient {
         });
 
       }
+
     })
     .catch(err => {
       cb(err, {});
