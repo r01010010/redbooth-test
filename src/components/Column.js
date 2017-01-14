@@ -26,7 +26,9 @@ class Column extends Component {
   };
 
   hasNewTask(meansCompletion, taskHistoryLength) {
-    return (meansCompletion && taskHistoryLength[1] && taskHistoryLength[1] < taskHistoryLength[0]);
+    return (meansCompletion
+            && (taskHistoryLength[1] !== undefined)
+            && taskHistoryLength[1] < taskHistoryLength[0]);
   }
 
   render() {

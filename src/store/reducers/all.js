@@ -1,16 +1,32 @@
-import getDemoState from '../lib/getDemoState';
 import TYPES from '../actions/types';
+//import { combineReducers } from 'redux';
 
-const demoState = getDemoState();
+function reduce(state = {}, action) {
 
-const reducer = (state = demoState, action = { type: null }) => {
+  const { REQUEST_BOARD, RECEIVE_BOARD, MOVE_TASK } = TYPES;
+
   switch (action.type) {
-  case TYPES.MOVE_TASK:
+
+  case REQUEST_BOARD:
+    return Object.assign({}, state, {
+      isFetching: true
+    });
+
+  case RECEIVE_BOARD:
+    return Object.assign({}, state, {
+      isFetching: false,
+      board: action.board,
+      err: action.err
+    });
+
+  case MOVE_TASK:
     state.board.moveTask(action.task, action.to);
-    return state;
+    return Object.assign({}, state);
+
   default:
     return state;
   }
-};
 
-export default reducer;
+}
+
+export default reduce;

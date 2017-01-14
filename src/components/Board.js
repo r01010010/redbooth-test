@@ -5,6 +5,7 @@ class Board extends Component {
 
   render() {
     const board = this.props.data;
+
     const columns = Object.keys(board.columns).map(key => {
       const column = board.columns[key];
       return <Column

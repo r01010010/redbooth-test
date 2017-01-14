@@ -8,9 +8,20 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Board data={this.context.store.getState().board} />
-    );
+    const state = this.context.store.getState();
+
+    if (state.isFetching) {
+      return <div>Loading</div>;
+
+    } else if (state.err) {
+      return <div>A problem ocurred when fetching the board info</div>;
+
+    } else if (state.board) {
+      return <Board data={state.board} />;
+
+    } else {
+      return <div>Oops</div>;
+    }
   }
 
 }

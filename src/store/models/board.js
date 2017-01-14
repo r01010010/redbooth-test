@@ -29,8 +29,8 @@ class Board extends Collection {
     const columnFrom = this.getColumnById(task.column);
     const columnTo = this.getColumnById(idColumnTo);
     task = columnFrom.getTaskById(task.id);
-    columnTo.addTask(task);
     columnFrom.deleteTask(task);
+    columnTo.addTask(task);
   }
 }
 

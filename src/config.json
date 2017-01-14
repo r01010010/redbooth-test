@@ -1,3 +1,9 @@
 {
-  "emphasis_img": "http://i3.kym-cdn.com/photos/images/original/000/972/132/24d.gif"
+  "emphasis_img": "http://i3.kym-cdn.com/photos/images/original/000/972/132/24d.gif",
+  "server": {
+    "uri": "http://localhost:1508",
+    "paths": {
+      "board": "board"
+    }
+  }
 }
