@@ -14,7 +14,7 @@ class App extends Component {
       return <div>Loading</div>;
 
     } else if (state.err) {
-      return <div>A problem ocurred when fetching the board info</div>;
+      return <div>Oops, A problem ocurred when fetching the board info. Is server running?</div>;
 
     } else if (state.board) {
       return <Board data={state.board} />;

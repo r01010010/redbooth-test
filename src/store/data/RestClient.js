@@ -10,7 +10,9 @@ class RestClient {
 
     path = this.uri + '/' + path;
 
-    fetch(path).then(response => {
+    console.log(fetch);
+    fetch(path)
+    .then(response => {
 
       if (!response.ok) {
         const err = new Error('Request failed');
@@ -23,6 +25,9 @@ class RestClient {
         });
 
       }
+    })
+    .catch(err => {
+      cb(err, {});
     });
   }
 }
